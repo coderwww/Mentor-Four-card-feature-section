@@ -1,0 +1,148 @@
+$red: hsl(0, 78%, 62%);
+$cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+
+$very-dark-blue: hsl(234, 12%, 34%);
+$grayish-blue: hsl(229, 6%, 66%);
+$very-light-gray: hsl(0, 0%, 98%);
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+body {
+    background-color: $very-light-gray;
+    color: $grayish-blue;
+    font: 400 15px 'Poppins', sans-serif;
+    margin: 0;
+    padding: 22% 0;
+}
+
+.header {
+    text-align: center;
+    margin: 0 0 17% 0;
+    .h {
+        padding: 0;
+        margin: 0 0 4% 0;
+        font-size: 1.5rem;
+        line-height: 1.6em;
+        color: $very-dark-blue;
+        i {
+            display: block;
+            font-style: normal;
+            font-weight: 200;
+        }
+    }
+    .text {
+        line-height: 1.6em;
+        padding: 0 8%;
+        margin: 0;
+    }
+}
+
+.four-card-section {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.card {
+    margin: 0.9rem 8%;
+    box-sizing: border-box;
+    border-top: 5px solid $grayish-blue;
+    background-color: white;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 6% 9%;
+    min-height: 60vw;
+    box-shadow: 0 10px 20px 0 rgba($color: #000000, $alpha: 0.1);
+}
+.card-header {
+    color: $very-dark-blue;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.4em;
+}
+.card-text {
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+@mixin theme($color: $grayish-blue, $img-url: none) {
+    border-color: $color;
+    display: flex;
+    flex-direction: column;
+    &::after {
+        content: $img-url;
+        align-self: flex-end;
+    }
+    .card-text {flex-grow: 1;}
+}
+.card.supervisor {
+    @include theme($color: $cyan, $img-url: url('../images/icon-supervisor.svg'));
+}
+.card.team-builder {
+    @include theme($color: $red, $img-url: url('../images/icon-team-builder.svg'));
+}
+.card.karma {
+    @include theme($color: $orange, $img-url: url('../images/icon-karma.svg'));
+}
+.card.calculator {
+    @include theme($color: $blue, $img-url: url('../images/icon-calculator.svg'));
+}
+
+@media only screen and (min-width: 400px) {
+    body{
+        display: flex;
+        padding: 80px 10px;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .header {
+        margin: 0 auto 60px auto;
+        max-width: 530px;
+    }
+    .card {
+        max-width: 350px;
+        min-height: 250px;
+        padding: 25px 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        padding: 80px 10px;
+    }
+    .four-card-section {
+        flex-direction: row;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        max-width: 1000px;
+    }
+    .card {margin: 1rem;}
+    .header {
+        margin-bottom: 3rem;
+        .h {
+            line-height: 1.4em;
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header {
+        margin-bottom: 2rem;
+    }
+    .four-card-section {
+        width: 1200px;
+        height: 600px;
+        flex-flow: column wrap;
+    }
+    .card:first-of-type,
+    .card:last-of-type{
+        margin: 50px 25px;
+    } 
+    
+}
